@@ -1,0 +1,118 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 8px solid #ffcc00;
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    color: #ffcc00;
+    text-shadow: 1px 1px 2px #333;
+    margin: 0 0 10px 0;
+    font-size: 2.5em;
+    transition: transform 0.3s ease;
+}
+
+h1:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+h2 {
+    color: #0066cc;
+    border-bottom: 1px solid #0066cc;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
+.contact-info {
+    font-style: normal;
+    color: #666;
+}
+
+.job {
+    margin-bottom: 20px;
+}
+
+.job-title {
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.company {
+    color: #0066cc;
+    font-style: italic;
+}
+
+ul {
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.skill-item {
+    padding: 8px;
+    background: #f9f9f9;
+    border-left: 3px solid #ffcc00;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #004c99;
+}
+
+.hidden {
+    display: none;
+}
+
+#ref-text {
+    margin-top: 15px;
+    font-style: italic;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
