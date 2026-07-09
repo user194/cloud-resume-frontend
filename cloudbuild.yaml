@@ -1,0 +1,29 @@
+steps:
+  # Deploy site files to GCS (exclude build/config files)
+  - name: 'gcr.io/cloud-builders/gsutil'
+    id: 'Deploy to GCS'
+    args:
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - '-c'
+      - '-d'
+      - '-x'
+      - '^.git/.*|^README\.md$|^cloudbuild\.yaml$|^\.gcloudignore$'
+      - '.'
+      - 'gs://thecloudresumechallenge-bucket'
+
+  # Clear CDN cache after deploy
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'Invalidate CDN'
+    entrypoint: 'gcloud'
+    args:
+      - 'compute'
+      - 'url-maps'
+      - 'invalidate-cdn-cache'
+      - 'thecloudresumechallenge-lb'
+      - '--path=/*'
+      - '--project=thecloudresumechallenge'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
