@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Visitor Counter API Call
     // Leave this placeholder for now! You will get this URL in Step 9.
-    const functionApi = import.meta.env.VITE_API_URL;
+    const functionApi = "https://thecloudresumechallenge-counter-api-552136933494.us-central1.run.app";
 
     const getVisitCount = () => {
         fetch(functionApi)
