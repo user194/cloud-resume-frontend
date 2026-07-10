@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const refText = document.getElementById('ref-text');
     const title = document.getElementById('resume-title');
 
-    // 1. Toggle reference text visibility
+    // Toggle reference text visibility
     if (refButton && refText) {
         refButton.addEventListener('click', () => {
             if (refText.classList.contains('hidden')) {
@@ -17,31 +17,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Easter egg: Honk alert when clicking name
+    // Easter egg: Honk alert when clicking name
     if (title) {
         title.addEventListener('click', () => {
             alert('🚚 Beep Beep! Leo is ready to build!');
         });
     }
 
-    // 3. Visitor Counter API Call
-    // Leave this placeholder for now! You will get this URL in Step 9.
+    // Visitor Counter API Call
     const functionApi = "https://thecloudresumechallenge-counter-api-552136933494.us-central1.run.app";
+    const SESSION_KEY = 'resume_visitor_counted';
 
     const getVisitCount = () => {
-        fetch(functionApi)
-            .then(response => {
-                return response.json();
-            })
-            .then(response => {
-                console.log("Website called function API.");
-                const count = response.count; 
-                document.getElementById('counter').innerText = count; 
-            })
-            .catch(error => {
-                console.log(error);
-                document.getElementById('counter').innerText = "Error loading views";
-            });
+        const el = document.getElementById('counter');
+        if (!el) return;
+        // Check if we already fetched and stored the count for this session
+        const cachedCount = sessionStorage.getItem(SESSION_KEY);
+        
+        if (cachedCount !== null) {
+            console.log("Session key found. Showing cached count.")
+            el.innerText = cachedCount;
+        } 
+        else {
+            fetch(functionApi)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Website called function API.");
+                    const count = data.count; 
+                    el.innerText = count; 
+                    
+                    sessionStorage.setItem(SESSION_KEY, count);
+                })
+                .catch(error => {
+                    console.log(error);
+                    el.innerText = "Error loading views";
+                });
+        }
     };
 
     // Call the counter function to execute it
