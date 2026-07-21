@@ -15,7 +15,362 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     border-top: 8px solid #ffcc00;
+}:root {
+    --charcoal: #1a1d23;
+    --steel: #2d3748;
+    --amber: #d97706;
+    --off-white: #f8f9fa;
+    --paper: #ffffff;
+    --ink: #1a1d23;
+    --ink-soft: #4a5568;
+
+    --font-head: 'Oswald', 'Segoe UI', sans-serif;
+    --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
 }
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background-color: #e5e7eb;
+    color: var(--ink);
+    margin: 0;
+    padding: 32px 16px;
+}
+
+.sheet {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--paper);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* ---------- Masthead ---------- */
+
+.masthead {
+    background: var(--charcoal);
+    color: var(--off-white);
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.badge {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    background: var(--amber);
+    color: var(--charcoal);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.6em;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 3px rgba(26,29,35,0.25);
+}
+
+.head-copy h1 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 2.1em;
+    letter-spacing: 0.02em;
+    margin: 0;
+    color: var(--off-white);
+    text-transform: uppercase;
+    transition: transform 0.2s ease;
+}
+
+.head-copy h1:hover {
+    transform: translateX(4px);
+    cursor: default;
+}
+
+.role {
+    font-family: var(--font-head);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 4px 0 8px;
+    font-size: 0.95em;
+}
+
+.contact-info {
+    margin: 0;
+    color: #b6bcc7;
+    font-size: 0.9em;
+}
+
+.contact-info a {
+    color: #b6bcc7;
+    text-decoration: none;
+    border-bottom: 1px dotted #b6bcc7;
+}
+
+.contact-info a:hover {
+    color: var(--amber);
+    border-color: var(--amber);
+}
+
+.dot {
+    margin: 0 8px;
+    color: var(--amber);
+}
+
+/* Caution strip: the signature element, a nod to hazard tape on the shop floor */
+.caution-strip {
+    height: 8px;
+    background: repeating-linear-gradient(
+        135deg,
+        var(--amber),
+        var(--amber) 14px,
+        var(--charcoal) 14px,
+        var(--charcoal) 28px
+    );
+}
+
+/* ---------- Layout ---------- */
+
+.layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+}
+
+.sidebar {
+    background: var(--charcoal);
+    color: var(--off-white);
+    padding: 30px 24px;
+    background-image:
+        linear-gradient(var(--steel) 1px, transparent 1px),
+        linear-gradient(90deg, var(--steel) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: -1px -1px;
+}
+
+.side-block { margin-bottom: 34px; }
+.side-block:last-child { margin-bottom: 0; }
+
+.side-heading {
+    font-family: var(--font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85em;
+    color: var(--amber);
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--steel);
+}
+
+.stat-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--steel);
+}
+
+.stat:last-child { border-bottom: none; }
+
+.stat-num {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.7em;
+    color: var(--off-white);
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 0.78em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #9aa2ad;
+}
+
+.cert-name {
+    margin: 0 0 4px;
+    font-size: 0.92em;
+    font-weight: 600;
+    color: var(--off-white);
+}
+
+.cert-issuer {
+    margin: 0;
+    font-size: 0.82em;
+    color: #9aa2ad;
+    font-style: italic;
+}
+
+/* ---------- Main column ---------- */
+
+.main-col {
+    padding: 34px 40px 40px;
+    background: var(--off-white);
+}
+
+.main-col section { margin-bottom: 30px; }
+.main-col section:last-child { margin-bottom: 0; }
+
+h2 {
+    font-family: var(--font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1.15em;
+    color: var(--charcoal);
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--charcoal);
+    position: relative;
+    padding-left: 16px;
+}
+
+/* Rivet mark: every section head is bolted to the page, like the parts Leo assembles */
+h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+}
+
+p { margin: 0 0 8px; color: var(--ink-soft); }
+
+.job { margin-bottom: 22px; }
+.job:last-child { margin-bottom: 0; }
+
+.job-title {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 1.02em;
+}
+
+.job-dates {
+    font-family: var(--font-head);
+    color: var(--amber);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.company {
+    color: var(--steel);
+    font-style: italic;
+    font-size: 0.92em;
+    margin-bottom: 6px;
+}
+
+ul {
+    margin: 6px 0 0;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+    color: var(--ink-soft);
+}
+
+/* Building block: current-project callout, framed distinctly from past experience */
+.building-block {
+    background: var(--paper);
+    border: 1px solid #e2e5e9;
+    border-left: 4px solid var(--amber);
+    border-radius: 4px;
+    padding: 18px 22px;
+}
+
+.building-block p { margin-bottom: 6px; }
+.building-block p:last-child { margin-bottom: 0; }
+.building-block strong { color: var(--ink); }
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.skill-item {
+    padding: 10px 12px;
+    background: var(--paper);
+    border: 1px solid #e2e5e9;
+    border-left: 3px solid var(--amber);
+    border-radius: 4px;
+    font-size: 0.92em;
+    color: var(--ink-soft);
+}
+
+.skill-item strong { color: var(--ink); }
+
+button {
+    background-color: var(--charcoal);
+    color: var(--off-white);
+    border: none;
+    padding: 10px 18px;
+    font-family: var(--font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.82em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover { background-color: var(--amber); }
+
+.hidden { display: none; }
+
+#ref-text {
+    margin-top: 14px;
+    font-style: italic;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ---------- Footer ---------- */
+
+.sheet-footer {
+    background: var(--charcoal);
+    color: #9aa2ad;
+    text-align: right;
+    padding: 14px 40px;
+    font-size: 0.85em;
+    border-top: 3px solid var(--amber);
+}
+
+.sheet-footer #counter {
+    color: var(--amber);
+    font-weight: 600;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 680px) {
+    .layout { grid-template-columns: 1fr; }
+    .masthead { padding: 22px 22px; }
+    .main-col { padding: 26px 22px 30px; }
+    .sidebar { padding: 24px 22px; }
+    .skills-list { grid-template-columns: 1fr; }
+    .sheet-footer { text-align: center; }
+}
+
 
 header {
     text-align: center;
